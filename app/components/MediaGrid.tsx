@@ -11,24 +11,36 @@ interface MediaGridProps {
 
 export default function MediaGrid({ items, type, title }: MediaGridProps) {
   if (items.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-gray-400">No {type === 'movie' ? 'movies' : 'TV shows'} found</p>
-      </div>
-    );
+    return null;
   }
 
   return (
-    <div>
+    <div className="mb-12 px-2 sm:px-4 md:px-6 lg:px-8">
       {title && (
-        <h2 className="text-2xl font-bold text-white mb-6">{title}</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 px-2">
+          {title}
+        </h2>
       )}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        {items.map((item) => (
-          <MediaCard key={item.id} media={item} type={type} />
-        ))}
+      <div className="relative group">
+        <div 
+          className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-4 scroll-smooth touch-pan-x"
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            scrollBehavior: 'smooth'
+          }}
+        >
+          <div className="flex gap-2 px-2" style={{ width: 'max-content' }}>
+            {items.map((item) => (
+              <div 
+                key={item.id} 
+                className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]"
+              >
+                <MediaCard media={item} type={type} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-

@@ -83,16 +83,16 @@ export default function WatchPage() {
     : 'Loading...';
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-netflix-black pt-16">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="mb-6 text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+          className="mb-6 text-netflix-gray-300 hover:text-white transition-colors flex items-center gap-2 font-medium"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
           Back
@@ -107,13 +107,12 @@ export default function WatchPage() {
                 alt={title}
                 width={80}
                 height={120}
-                className="rounded-lg"
               />
             )}
             <div>
-              <h1 className="text-2xl font-bold text-white">{title}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-white">{title}</h1>
               {type === 'tv' && season && episode && (
-                <p className="text-gray-400">
+                <p className="text-netflix-gray-400">
                   Season {season}, Episode {episode}
                 </p>
               )}
@@ -122,25 +121,25 @@ export default function WatchPage() {
         )}
 
         {/* Video Player */}
-        <div className="bg-black rounded-lg overflow-hidden">
+        <div className="bg-netflix-black overflow-hidden">
           {loading ? (
             <div className="w-full aspect-video flex items-center justify-center">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-                <p className="text-white">Loading video sources...</p>
+                <p className="text-white font-medium">Loading video sources...</p>
               </div>
             </div>
           ) : error ? (
             <div className="w-full aspect-video flex items-center justify-center">
               <div className="text-center">
-                <p className="text-white text-lg mb-4">{error}</p>
+                <p className="text-white text-xl mb-6 font-medium">{error}</p>
                 <button
                   onClick={handleRetry}
-                  className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+                  className="px-8 py-3 bg-white text-netflix-black font-bold rounded-md hover:bg-white/80 transition-all duration-200"
                 >
                   Retry
                 </button>
-                <p className="text-gray-400 text-sm mt-4">
+                <p className="text-netflix-gray-400 text-sm mt-6">
                   If the problem persists, the content may not be available.
                 </p>
               </div>
@@ -157,7 +156,7 @@ export default function WatchPage() {
             />
           ) : (
             <div className="w-full aspect-video flex items-center justify-center">
-              <p className="text-white">No video sources available</p>
+              <p className="text-white font-medium">No video sources available</p>
             </div>
           )}
         </div>
@@ -167,9 +166,12 @@ export default function WatchPage() {
           <div className="mt-8">
             <Link
               href={`/${type}/${id}`}
-              className="text-red-500 hover:text-red-600 transition-colors"
+              className="text-white hover:text-netflix-red transition-colors font-medium inline-flex items-center gap-2"
             >
-              View Details →
+              View Details
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         )}
@@ -177,4 +179,3 @@ export default function WatchPage() {
     </div>
   );
 }
-

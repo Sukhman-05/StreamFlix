@@ -72,14 +72,14 @@ export default function BrowsePage() {
   const years = Array.from({ length: 50 }, (_, i) => currentYear - i);
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-netflix-black pt-16">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-4xl font-bold text-white mb-8">Browse</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">Browse</h1>
 
         {/* Filters */}
-        <div className="mb-8 space-y-4">
+        <div className="mb-8 space-y-6">
           {/* Type Toggle */}
           <div className="flex gap-4">
             <button
@@ -89,10 +89,10 @@ export default function BrowsePage() {
                 setYear('');
                 setPage(1);
               }}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-6 py-3 rounded-md font-bold transition-all duration-200 ${
                 type === 'movie'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  ? 'bg-white text-netflix-black'
+                  : 'bg-netflix-gray-700/50 text-netflix-gray-200 hover:bg-netflix-gray-700'
               }`}
             >
               Movies
@@ -104,10 +104,10 @@ export default function BrowsePage() {
                 setYear('');
                 setPage(1);
               }}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-6 py-3 rounded-md font-bold transition-all duration-200 ${
                 type === 'tv'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  ? 'bg-white text-netflix-black'
+                  : 'bg-netflix-gray-700/50 text-netflix-gray-200 hover:bg-netflix-gray-700'
               }`}
             >
               TV Shows
@@ -116,14 +116,14 @@ export default function BrowsePage() {
 
           {/* Genre Filter */}
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Genre</label>
+            <label className="block text-sm font-medium text-netflix-gray-300 mb-3">Genre</label>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => handleGenreChange(null)}
-                className={`px-4 py-2 rounded-lg text-sm transition-colors ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   selectedGenre === null
-                    ? 'bg-red-600 text-white'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    ? 'bg-white text-netflix-black'
+                    : 'bg-netflix-gray-700/50 text-netflix-gray-200 hover:bg-netflix-gray-700'
                 }`}
               >
                 All
@@ -132,10 +132,10 @@ export default function BrowsePage() {
                 <button
                   key={genre.id}
                   onClick={() => handleGenreChange(genre.id)}
-                  className={`px-4 py-2 rounded-lg text-sm transition-colors ${
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     selectedGenre === genre.id
-                      ? 'bg-red-600 text-white'
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                      ? 'bg-white text-netflix-black'
+                      : 'bg-netflix-gray-700/50 text-netflix-gray-200 hover:bg-netflix-gray-700'
                   }`}
                 >
                   {genre.name}
@@ -146,11 +146,11 @@ export default function BrowsePage() {
 
           {/* Year Filter */}
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Year</label>
+            <label className="block text-sm font-medium text-netflix-gray-300 mb-3">Year</label>
             <select
               value={year}
               onChange={(e) => handleYearChange(e.target.value)}
-              className="px-4 py-2 bg-gray-800 text-white rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="px-4 py-2 bg-netflix-gray-800 text-white rounded-md border border-netflix-gray-700 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
             >
               <option value="">All Years</option>
               {years.map((y) => (
@@ -166,7 +166,7 @@ export default function BrowsePage() {
         {loading ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
-            <p className="text-gray-400 mt-4">Loading...</p>
+            <p className="text-netflix-gray-400 mt-4">Loading...</p>
           </div>
         ) : (
           <>
@@ -176,15 +176,15 @@ export default function BrowsePage() {
               <button
                 onClick={() => setPage(Math.max(1, page - 1))}
                 disabled={page === 1}
-                className="px-4 py-2 bg-gray-800 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700"
+                className="px-6 py-3 bg-netflix-gray-700 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-netflix-gray-600 transition-all duration-200 font-medium"
               >
                 Previous
               </button>
-              <span className="px-4 py-2 text-gray-300">Page {page}</span>
+              <span className="px-6 py-3 text-netflix-gray-300 font-medium">Page {page}</span>
               <button
                 onClick={() => setPage(page + 1)}
                 disabled={items.length < 20}
-                className="px-4 py-2 bg-gray-800 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-700"
+                className="px-6 py-3 bg-netflix-gray-700 text-white rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-netflix-gray-600 transition-all duration-200 font-medium"
               >
                 Next
               </button>
@@ -195,4 +195,3 @@ export default function BrowsePage() {
     </div>
   );
 }
-

@@ -101,11 +101,11 @@ export default function SearchBar({ onSearch, showSuggestions = false }: SearchB
             }
           }}
           placeholder="Search movies and TV shows..."
-          className="w-full px-4 py-3 pl-12 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+          className="w-full px-4 py-3 pl-12 bg-netflix-gray-800 border border-netflix-gray-700 rounded-md text-white placeholder-netflix-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
         />
         <button
           type="submit"
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-netflix-gray-400 hover:text-white transition-colors"
         >
           <svg
             className="w-5 h-5"
@@ -129,7 +129,7 @@ export default function SearchBar({ onSearch, showSuggestions = false }: SearchB
       </form>
 
       {showSuggestions && showSuggestionsList && suggestions.length > 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-gray-800 border border-gray-700 rounded-lg shadow-xl max-h-96 overflow-y-auto">
+        <div className="absolute z-50 w-full mt-2 bg-netflix-gray-800 border border-netflix-gray-700 rounded-md shadow-2xl max-h-96 overflow-y-auto">
           {suggestions.map((item) => (
             <button
               key={item.id}
@@ -139,20 +139,22 @@ export default function SearchBar({ onSearch, showSuggestions = false }: SearchB
                 setShowSuggestionsList(false);
                 setQuery('');
               }}
-              className="w-full px-4 py-3 text-left hover:bg-gray-700 transition-colors flex items-center gap-3"
+              className="w-full px-4 py-3 text-left hover:bg-netflix-gray-700 transition-colors flex items-center gap-3 border-b border-netflix-gray-700 last:border-0"
             >
               {item.poster_path && (
                 <img
                   src={`https://image.tmdb.org/t/p/w92${item.poster_path}`}
                   alt={getTitle(item)}
-                  className="w-12 h-16 object-cover rounded"
+                  className="w-12 h-16 object-cover flex-shrink-0"
                 />
               )}
-              <div className="flex-1">
-                <p className="text-white font-medium">{getTitle(item)}</p>
-                <p className="text-gray-400 text-sm">
-                  {getType(item) === 'movie' ? 'Movie' : 'TV Show'} • ⭐{' '}
-                  {item.vote_average.toFixed(1)}
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-medium truncate">{getTitle(item)}</p>
+                <p className="text-netflix-gray-400 text-sm">
+                  {getType(item) === 'movie' ? 'Movie' : 'TV Show'}
+                  {item.vote_average !== undefined && item.vote_average !== null && (
+                    <> • ⭐ {item.vote_average.toFixed(1)}</>
+                  )}
                 </p>
               </div>
             </button>
@@ -162,4 +164,3 @@ export default function SearchBar({ onSearch, showSuggestions = false }: SearchB
     </div>
   );
 }
-

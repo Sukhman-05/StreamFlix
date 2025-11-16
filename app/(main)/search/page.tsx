@@ -61,11 +61,11 @@ function SearchContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-netflix-black pt-16">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-4xl font-bold text-white mb-8">Search</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">Search</h1>
 
         {/* Search Bar */}
         <div className="mb-8">
@@ -76,13 +76,13 @@ function SearchContent() {
         {loading ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
-            <p className="text-gray-400 mt-4">Searching...</p>
+            <p className="text-netflix-gray-400 mt-4">Searching...</p>
           </div>
         ) : query ? (
           <>
             {results.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-gray-400 text-lg">No results found for "{query}"</p>
+                <p className="text-netflix-gray-400 text-lg">No results found for "{query}"</p>
               </div>
             ) : (
               <>
@@ -101,7 +101,7 @@ function SearchContent() {
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">Enter a search query to find movies and TV shows</p>
+            <p className="text-netflix-gray-400 text-lg">Enter a search query to find movies and TV shows</p>
           </div>
         )}
       </div>
@@ -112,12 +112,12 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-900">
+      <div className="min-h-screen bg-netflix-black pt-16">
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
-            <p className="text-gray-400 mt-4">Loading...</p>
+            <p className="text-netflix-gray-400 mt-4">Loading...</p>
           </div>
         </div>
       </div>
@@ -126,4 +126,3 @@ export default function SearchPage() {
     </Suspense>
   );
 }
-
