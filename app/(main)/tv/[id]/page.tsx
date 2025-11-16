@@ -103,7 +103,7 @@ export default async function TVDetailPage({ params }: { params: { id: string } 
                 )}
 
                 {tvShow.tagline && (
-                  <p className="text-xl text-netflix-gray-300 italic mb-4">"{tvShow.tagline}"</p>
+                  <p className="text-xl text-netflix-gray-300 italic mb-4">&quot;{tvShow.tagline}&quot;</p>
                 )}
 
                 <p className="text-lg mb-6 leading-relaxed max-w-3xl text-netflix-gray-200">

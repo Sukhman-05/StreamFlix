@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Movie, TVShow } from '../lib/types';
 
 interface SearchBarProps {
@@ -142,9 +143,11 @@ export default function SearchBar({ onSearch, showSuggestions = false }: SearchB
               className="w-full px-4 py-3 text-left hover:bg-netflix-gray-700 transition-colors flex items-center gap-3 border-b border-netflix-gray-700 last:border-0"
             >
               {item.poster_path && (
-                <img
+                <Image
                   src={`https://image.tmdb.org/t/p/w92${item.poster_path}`}
                   alt={getTitle(item)}
+                  width={48}
+                  height={64}
                   className="w-12 h-16 object-cover flex-shrink-0"
                 />
               )}

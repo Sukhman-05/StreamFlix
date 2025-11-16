@@ -82,7 +82,7 @@ function SearchContent() {
           <>
             {results.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-netflix-gray-400 text-lg">No results found for "{query}"</p>
+                <p className="text-netflix-gray-400 text-lg">No results found for &quot;{query}&quot;</p>
               </div>
             ) : (
               <>

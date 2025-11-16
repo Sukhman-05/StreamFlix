@@ -26,7 +26,7 @@ export default function WatchPage() {
   useEffect(() => {
     fetchMediaDetails();
     fetchSources();
-  }, [type, id, season, episode]);
+  }, [type, id, season, episode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchMediaDetails = async () => {
     setLoadingDetails(true);

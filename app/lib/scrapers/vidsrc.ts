@@ -40,7 +40,7 @@ export class VidSrcScraper implements Scraper {
         // Pattern 1: Look for HLS streams (.m3u8)
         const hlsMatches = html.match(/https?:\/\/[^\s"']+\.m3u8/g);
         if (hlsMatches) {
-          hlsMatches.forEach(url => {
+          hlsMatches.forEach((url: string) => {
             sources.push({
               url: url,
               type: 'hls',
@@ -53,7 +53,7 @@ export class VidSrcScraper implements Scraper {
         // Pattern 2: Look for MP4 links
         const mp4Matches = html.match(/https?:\/\/[^\s"']+\.mp4/g);
         if (mp4Matches) {
-          mp4Matches.forEach(url => {
+          mp4Matches.forEach((url: string) => {
             sources.push({
               url: url,
               type: 'mp4',

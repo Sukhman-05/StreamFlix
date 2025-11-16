@@ -100,7 +100,7 @@ export default async function MovieDetailPage({ params }: { params: { id: string
                 )}
 
                 {movie.tagline && (
-                  <p className="text-xl text-netflix-gray-300 italic mb-4">"{movie.tagline}"</p>
+                  <p className="text-xl text-netflix-gray-300 italic mb-4">&quot;{movie.tagline}&quot;</p>
                 )}
 
                 <p className="text-lg mb-6 leading-relaxed max-w-3xl text-netflix-gray-200">

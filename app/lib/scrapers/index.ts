@@ -55,14 +55,14 @@ class ScraperOrchestrator {
   // Get sources from multiple scrapers in parallel (for redundancy)
   async scrapeAll(params: ScraperParams): Promise<VideoSource[]> {
     const promises = this.scrapers.map(scraper => 
-      scraper.scrape(params).catch(() => ({ success: false, error: 'Failed' }))
+      scraper.scrape(params).catch(() => ({ success: false, error: 'Failed' } as ScraperResult))
     );
 
     const results = await Promise.all(promises);
     const allSources: VideoSource[] = [];
 
     results.forEach(result => {
-      if (result.success && result.sources) {
+      if (result.success && 'sources' in result && result.sources && result.sources.length > 0) {
         allSources.push(...result.sources);
       }
     });

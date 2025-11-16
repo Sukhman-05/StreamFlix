@@ -16,11 +16,11 @@ export default function BrowsePage() {
 
   useEffect(() => {
     fetchGenres();
-  }, [type]);
+  }, [type]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     fetchItems();
-  }, [type, selectedGenre, year, page]);
+  }, [type, selectedGenre, year, page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchGenres = async () => {
     try {
